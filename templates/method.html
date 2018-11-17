@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <div id="tabs">
+        <ul class="nav nav-tabs">
+            {% for method in methods %}
+                <li class="nav-item">
+                    {% if forloop.counter == current_method %}
+                        <a class="nav-link active" href="/method/{{ current_method }}/">{{ method.name }}</a>
+                    {% else %}
+                        <a class="nav-link" href="/method/{{ method.id }}/">{{ method.name }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="row" id="method_body">
+        <div class="col-7 upload_block">
+            <h5>Загрузить файл снимка</h5>
+            <div id="image-preview">
+                <label for="image-upload" id="image-label">Выберите файл</label>
+                <input type="file" name="file" required id="image-upload">
+            </div>
+            <div id="upload_submit">
+                <button class="btn btn-success" onclick="upload_file({{ current_method }})">Загрузить</button>
+            </div>
+        </div>
+        <div class="col-5 choose_block">
+            <h5>Выбрать готовый снимок</h5>
+            <div class="row shots">
+                <div class="col-4 shot"><img onclick="choose_file('shot1.jpg',{{ current_method }})"
+                                             src="{% static 'images/shot1.jpg' %}" alt=""></div>
+                <div class="col-4 shot"><img onclick="choose_file('shot2.jpg',{{ current_method }})"
+                                             src="{% static 'images/shot2.jpg' %}" alt=""></div>
+                <div class="col-4 shot"><img onclick="choose_file('shot3.jpeg',{{ current_method }})"
+                                             src="{% static 'images/shot3.jpeg' %}" alt=""></div>
+                <div class="col-4 shot"><img onclick="choose_file('shot1.jpg',{{ current_method }})"
+                                             src="{% static 'images/shot1.jpg' %}" alt=""></div>
+                <div class="col-4 shot"><img onclick="choose_file('shot2.jpg',{{ current_method }})"
+                                             src="{% static 'images/shot2.jpg' %}" alt=""></div>
+                <div class="col-4 shot"><img onclick="choose_file('shot3.jpeg',{{ current_method }})"
+                                             src="{% static 'images/shot3.jpeg' %}" alt=""></div>
+            </div>
+        </div>
+        <div id="result_block">
+            <h5>Результат: </h5>
+            <div class="row">
+                <div id="result_image_block" class="col-7"></div>
+                <div id="result_description" class="col-5"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
