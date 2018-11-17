@@ -135,18 +135,30 @@ header {
 
 /*end image preview*/
 
+.choose_block {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.upload_block {
+    display: none;
+}
+
 .upload_block h5, .choose_block h5, #result_block h5 {
     margin-bottom: 20px;
 }
 
 .shot {
-    text-align: right;
+    /*text-align: right;*/
+    text-align: center;
     margin-bottom: 25px;
 }
 
 .shot img {
-    width: 110px;
-    height: 110px;
+    /*width: 110px;*/
+    /*height: 110px;*/
+    width: 200px;
+    height: 200px;
     cursor: pointer;
 }
 
